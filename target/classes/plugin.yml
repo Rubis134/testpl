@@ -1,0 +1,12 @@
+name: testpl
+version: '1.0-SNAPSHOT'
+main: com.montana.testpl.Main
+
+
+commands:
+  mt:
+    description: testcommandedescription
+  addit:
+    description: additionnerdestrucs
+  guitest:
+    description: opengui

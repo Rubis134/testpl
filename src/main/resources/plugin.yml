@@ -1,0 +1,12 @@
+name: testpl
+version: '${project.version}'
+main: com.montana.testpl.Main
+
+
+commands:
+  mt:
+    description: testcommandedescription
+  addit:
+    description: additionnerdestrucs
+  guitest:
+    description: opengui
