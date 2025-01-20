@@ -1,10 +1,13 @@
 package com.montana.testpl;
 
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
 public final class Main extends JavaPlugin {
+    private static Economy econ = null;
 
     public static Main getInstance() { return getPlugin(Main.class); }
 
@@ -15,6 +18,9 @@ public final class Main extends JavaPlugin {
             getCommand("mt").setExecutor(new Commandetest());
             getCommand("addit").setExecutor(new AdditionChiffre());
             new InventoryManager(this);
+            getServer().getPluginManager().registerEvents(new Guilistener(), this);
+            new TimePlugin().ajusterTempsJourNuit();
+
 
 
             // Plugin startup logic
@@ -26,4 +32,24 @@ public final class Main extends JavaPlugin {
             // Plugin shutdown logic
         }
 
+
+        private boolean setupEconomy() {
+            if (getServer().getPluginManager().getPlugin("Vault") == null) {
+                return false;
+            }
+            RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+            if (rsp == null) {
+                return  false;
+            }
+            econ = rsp.getProvider();
+            return econ != null;
+        }
+
+        public static Economy getEconomy() {
+        return econ;
+        }
+
+
+
 }
+
