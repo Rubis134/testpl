@@ -24,8 +24,8 @@ public class Commandetest implements CommandExecutor {
         Player p= (Player) commandSender;
         if (p.isOp()){
             p.sendMessage("test");
-            Location l= new Location(p.getWorld(), 0,100,0);
-            p.teleport(l);
+            //Location l= new Location(p.getWorld(), 0,100,0);
+            //p.teleport(l);
             Guitest itst = new Guitest(p, Main.getInstance());
             p.openInventory(itst.getInventory());
             if (economy.getBalance(p) > 150) {

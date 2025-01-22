@@ -30,8 +30,11 @@ public class InventoryManager {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 // Vérifie si le joueur est OP, et s'il l'est, on ne fait rien
-                if (player.isOp()) {
+                if (player.isOp()){
                     continue; // Ignore le joueur si c'est un OP
+                } else if (player.hasPermission("build")) {
+                    continue;
+
                 }
 
                 Inventory inventory = player.getInventory();

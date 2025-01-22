@@ -1,9 +1,6 @@
 package com.montana.testpl;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -19,42 +16,47 @@ public class Testevent implements Listener {
     @EventHandler
     public void PlayerRejoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        p.sendMessage("tu as" + p.getFoodLevel());
-    }
-
-    @EventHandler
-    public void QuandJoueurQuitte(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        p.sendMessage("" + p.getExp());
-    }
-
-    @EventHandler
-    public void QuandBlockCasse(BlockBreakEvent e) {
-        if (!e.getPlayer().isOp()) {
-            e.setCancelled(true);
+        if (p.getFoodLevel() < 10){
+            p.sendMessage(ChatColor.RED+"Vous avez faim.");
+        }
+        if (p.getHealth() < 10){
+            p.sendMessage(ChatColor.RED+"Vous avez besoin de soins.");
         }
     }
 
-    @EventHandler
-    public void NpcClic(PlayerInteractEntityEvent e) {
-        Player p = e.getPlayer();
-        Entity pnj = e.getRightClicked();
-        if (pnj.getType() == EntityType.VILLAGER) {
-            if (pnj.getCustomName().equalsIgnoreCase("Michel")){
-                p.sendMessage("Salut moi c'est Michel");
-            }
-            if (p.isOp()) {
-                ItemStack pomme = new ItemStack(Material.APPLE, 5);
-                Location pnjloc = e.getRightClicked().getLocation();
-                p.getInventory().addItem(pomme);
-                p.sendMessage("Je te donne quelques pommes");
-                p.spawnParticle(Particle.VILLAGER_ANGRY, pnjloc, 10, 0.5, 0.5, 0.5, 0.1);
+    //@EventHandler
+    //public void QuandJoueurQuitte(PlayerQuitEvent e) {
+    //    Player p = e.getPlayer();
+    //    p.sendMessage("" + p.getExp());
+    //}
 
-            } else {
-                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
-                p.sendMessage("Pas op donc pas de pommes");
-            }
-        }
+    //@EventHandler
+    //public void QuandBlockCasse(BlockBreakEvent e) {
+    //    if (!e.getPlayer().isOp()) {
+    //        e.setCancelled(true);
+    //    }
+    //}
 
+    //@EventHandler
+    //public void NpcClic(PlayerInteractEntityEvent e) {
+    //    Player p = e.getPlayer();
+    //    Entity pnj = e.getRightClicked();
+    //    if (pnj.getType() == EntityType.VILLAGER) {
+    //        if (pnj.getCustomName().equalsIgnoreCase("Michel")){
+    //            p.sendMessage("Salut moi c'est Michel");
+    //        }
+    //        if (p.isOp()) {
+    //            ItemStack pomme = new ItemStack(Material.APPLE, 5);
+    //            Location pnjloc = e.getRightClicked().getLocation();
+    //            p.getInventory().addItem(pomme);
+    //            p.sendMessage("Je te donne quelques pommes");
+    //            p.spawnParticle(Particle.VILLAGER_ANGRY, pnjloc, 10, 0.5, 0.5, 0.5, 0.1);
+
+//            } else {
+//                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+//                p.sendMessage("Pas op donc pas de pommes");
+//            }
+//        }
+//
     }
-}
+//}

@@ -13,12 +13,12 @@ public final class Main extends JavaPlugin {
 
         @Override
         public void onEnable() {
-            Bukkit.broadcastMessage("TestPluginv2");
-            getServer().getPluginManager().registerEvents(new Testevent(), this);
-            getCommand("mt").setExecutor(new Commandetest());
-            getCommand("addit").setExecutor(new AdditionChiffre());
+            Bukkit.broadcastMessage("Montana Plugin Enable");
+            //getServer().getPluginManager().registerEvents(new Testevent(), this);
+            //getCommand("mt").setExecutor(new Commandetest());
+            //getCommand("addit").setExecutor(new AdditionChiffre());
             new InventoryManager(this);
-            getServer().getPluginManager().registerEvents(new Guilistener(), this);
+            //getServer().getPluginManager().registerEvents(new Guilistener(), this);
             new TimePlugin().ajusterTempsJourNuit();
 
 
